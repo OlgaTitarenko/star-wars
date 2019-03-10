@@ -4,11 +4,13 @@ import * as peopleApi from '../api/people';
 import Pagination from '../Common/Pagination'
 
 class PeoplePage extends React.Component {
+
   state = {
     isLoaded: false,
     page: 0,
     count: 0,
     people: [],
+    person: []
   };
 
   componentDidMount() {
@@ -42,6 +44,18 @@ class PeoplePage extends React.Component {
     });
   };
 
+  loadPerson = async (url) => {
+    const api='https://swapi.co/api/people/1/';
+    const getId = url.match(/\d\d?/)[0];
+    const person = await peopleApi.getById(getId);
+    this.setState({person});
+    console.log('person', person);
+  }
+
+onClickName(url) {
+   // this.loadPerson(url)
+  console.log(url);
+}
   render() {
     const { people, isLoaded, count, page } = this.state;
 
@@ -52,11 +66,25 @@ class PeoplePage extends React.Component {
         { isLoaded ? (
           <>
             <Pagination count={count} page={page} />
-            <ul>
-              { people.map(person => (
-                <li key={person.name}>{person.name}</li>
-              ))}
-            </ul>
+
+            <table>
+              <thead>
+                <tr>
+                  <td>Name</td>
+                  <td>Mass</td>
+                  <td>Height</td>
+                  <td>Hair color</td>
+                  <td>Skin color</td>
+                </tr>
+              </thead>
+              <tbody>
+              { people.map ( person => (
+                    <PersonTable person={person} key={person.name} onClick={this.onClickName(person)} />
+              ))
+              }
+              </tbody>
+            </table>
+
           </>
         ) : (
           <p>Loading...</p>
@@ -64,6 +92,19 @@ class PeoplePage extends React.Component {
       </div>
     );
   }
+}
+
+const PersonTable = ({person}) => {
+
+  return  (
+      <tr>
+        <td>{person.name}</td>
+        <td>{person.mass}</td>
+        <td>{person.height}</td>
+        <td>{person.hair_color}</td>
+        <td>{person.skin_color}</td>
+      </tr>
+     )
 }
 
 export default PeoplePage;

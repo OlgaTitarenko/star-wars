@@ -18,10 +18,11 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Star Wars</h1>
-        <NavLink to="/" >Home</NavLink>
-        <NavLink to="/films">Films</NavLink>
-        <NavLink to="/people">People</NavLink>
-
+        <div className="navLinks">
+          <NavLink to="/" >Home</NavLink> <br />
+          <NavLink to="/films">Films</NavLink> <br />
+          <NavLink to="/people">People</NavLink> <br />
+        </div>
         <section>
           <Switch>
             <Route exact path="/" component={HomePage} />
