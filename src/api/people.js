@@ -10,5 +10,5 @@ export const getAll = ({ page = 1, search = '' }) => {
 };
 
 export const getById = (personId) => {
-  return get(`/people/${personId}`);
+  return get(`${personId}`);
 };

@@ -4,14 +4,10 @@ import { NavLink, Route, Switch } from 'react-router-dom';
 import HomePage from './HomePage';
 import FilmsPage from './FilmsPage';
 import PeoplePage from './PeoplePage';
-import CategoryPage from './CategoryPage';
+import PersonPage from './PeoplePage/PersonPage';
+import FilmPage from './FilmsPage/FilmPage'
 
 import './App.css';
-
-const allowedCategories = [
-  'people', 'films', 'starships'
-];
-
 
 class App extends Component {
   render() {
@@ -25,10 +21,12 @@ class App extends Component {
         </div>
         <section>
           <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/films" component={FilmsPage} />
-            <Route exact path="/people" component={PeoplePage} />
-            <Route exact path={`/:category(${ allowedCategories.join('|') })`} component={CategoryPage} />
+            <Route exact path={'/'} component={HomePage} />
+            <Route path={'/films/:id'} component={FilmPage} />
+            <Route path={'/films'} component={FilmsPage} />
+            <Route path={'/people/:id'} component={PersonPage} />
+            <Route path={'/people'} component={PeoplePage} />
+
             <Route render={() => <h1>Page not found</h1>}/>
           </Switch>
         </section>
