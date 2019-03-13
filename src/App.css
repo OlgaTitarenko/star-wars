@@ -5,6 +5,9 @@
   position: absolute;
   margin: 5px;
  }
+table{
+ margin-top: 40px;
+  }
 thead {
   font-size: 18px;
   font-family: "Comic Sans MS";
@@ -12,3 +15,17 @@ thead {
 td {
   border-bottom: 1px solid gray;
 }
+li {
+  margin: 5px;
+  text-align: left;
+  border-bottom: 1px dashed blue;
+  color: #282c34;
+}
+span {
+  font-size: 20px;
+  color: black;
+}
+ul {
+  margin-top: 40px;
+}
+

@@ -10,7 +10,6 @@ class FilmPage extends React.Component {
     componentDidMount() {
         const { location } = this.props;
         const filmId = location.pathname;
-        console.log(filmId);
         this.setState({filmId}, this.loadFilm);
     };
 

@@ -15,7 +15,7 @@ class PersonPage extends React.Component {
 
     loadPerson = async () => {
         const person = await peopleApi.getById(this.state.personId);
-        console.log(person);
+
         this.setState({
             isLoaded: true,
             person
@@ -25,7 +25,7 @@ class PersonPage extends React.Component {
 
     render() {
         const { isLoaded , person} = this.state;
-        console.log(typeof person.films);
+
         return (
             <div>
                 PersonPage
@@ -37,6 +37,7 @@ class PersonPage extends React.Component {
                               { Object.keys(person).map(item => {
                                   return <li key={ item }>
                                             <span>{item.replace('_',' ')} - </span>
+                                            <br />
                                             {(typeof person[item])==="string" ? person[item]
                                                 : person[item].length
                                             }
